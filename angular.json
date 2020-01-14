@@ -22,6 +22,12 @@
     },
     "@schematics/angular:service": {
       "spec": false
+    },
+    "@ngrx/schematics:effect": {
+      "spec": false
+    },
+    "@ngrx/schematics:reducer": {
+      "spec": false
     }
   },
   "version": 1,
@@ -46,7 +52,7 @@
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
-            "aot": true,
+            "aot": false,
             "assets": [
               "src/favicon.ico",
               "src/assets",
@@ -152,6 +158,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "social-suite-angular"
+    }
+  },
+  "defaultProject": "social-suite-angular",
+  "cli": {
+    "defaultCollection": "@ngrx/schematics"
+  }
 }
