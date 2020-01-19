@@ -4,6 +4,7 @@ import { Store } from '@ngrx/store';
 import * as fromApp from '../reducers/index';
 import * as AuthActions from './store/auth.actions';
 import { Subscription } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-auth',
@@ -18,7 +19,7 @@ export class AuthComponent implements OnInit, OnDestroy {
 
   private storeSub: Subscription = null;
 
-  constructor(private store: Store<fromApp.State>) {}
+  constructor(private router: Router, private store: Store<fromApp.State>) {}
 
   ngOnInit() {
 
@@ -31,6 +32,10 @@ export class AuthComponent implements OnInit, OnDestroy {
 
   onSwitchMode() {
     this.loginMode = !this.loginMode;
+  }
+
+  onResetPassword() {
+    this.router.navigate(['/auth', 'reset-password']);
   }
 
   onSubmit(form: NgForm) {

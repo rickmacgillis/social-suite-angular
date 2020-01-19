@@ -1,7 +1,7 @@
 <div class="col-md-6 offset-md-3 mt-3">
     <div class="card">
         <div class="card-header bg-dark text-white">
-            <h3 class="m-0">Login</h3>
+            <h3 class="m-0">Account Settings</h3>
         </div>
         <div class="card-body">
             <div class="text-center" *ngIf="loading">
@@ -10,8 +10,9 @@
                     <div></div>
                 </div>
             </div>
-            <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)" *ngIf="!loading">
+            <form #settingsForm="ngForm" (ngSubmit)="onSubmit(settingsForm)" *ngIf="!loading">
                 <div class="invalid-feedback d-block mb-3" *ngIf="error">{{ error }}</div>
+                <div class="valid-feedback d-block mb-3" *ngIf="updateSuccessful">Success! We updated your everything. :)</div>
                 <div class="form-group">
                     <label for="email">Email address</label>
                     <input
@@ -19,43 +20,37 @@
                         class="form-control"
                         id="email"
                         name="email"
-                        ngModel
+                        [(ngModel)]="email"
                         required
                         email
-                        #email="ngModel"
-                        [class.is-valid]="email.valid"
-                        [class.is-invalid]="email.invalid && email.touched"
+                        #emailField="ngModel"
+                        [class.is-valid]="emailField.valid"
+                        [class.is-invalid]="emailField.invalid && emailField.touched"
                     >
                     <div class="valid-feedback">Looks good!</div>
                     <div class="invalid-feedback">Please enter a valid email address.</div>
                 </div>
                 <div class="form-group">
-                    <label for="password">Password</label>
+                    <label for="password">New Password</label>
                     <input
                         type="password"
                         class="form-control"
                         id="password"
                         name="password"
                         ngModel
-                        required
                         minlength="16"
                         #password="ngModel"
+                        placeholder="Leave blank to keep your existing password"
                         [class.is-valid]="password.valid"
                         [class.is-invalid]="password.invalid && password.touched"
                     >
                     <div class="valid-feedback">Looks good!</div>
                     <div class="invalid-feedback">Please enter a valid password. (Must be at leat 16 characters.)</div>
                 </div>
-                <button type="submit" class="btn btn-primary" [disabled]="authForm.invalid">
-                    {{ loginMode ? 'Login' : 'Register' }}
-                </button>
-                <button type="button" class="btn btn-link" (click)="onSwitchMode()">
-                    {{ loginMode ? 'Register an Account' : 'Login' }}
+                <button type="submit" class="btn btn-primary" [disabled]="settingsForm.invalid">
+                    Save
                 </button>
             </form>
-        </div>
-        <div class="card-footer" *ngIf="!loading">
-            <a class="btn btn-warning btn-block" type="button" (click)="onResetPassword()">Reset Password</a>
         </div>
     </div>
 </div>

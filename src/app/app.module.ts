@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule } from './modules/app-routing.module';
 import { AppComponent } from './app.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
@@ -9,23 +9,40 @@ import { HeaderComponent } from './header/header.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { CommonModule } from '@angular/common';
 import { AuthModule } from './auth/auth.module';
-import { AppStoreModule } from './app-store.module';
+import { AppStoreModule } from './modules/app-store.module';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptorService } from './auth/auth.interceptor';
+import { SettingsComponent } from './settings/settings.component';
+import { FormsModule } from '@angular/forms';
+import { EffectsModule } from '@ngrx/effects';
+import { SettingsEffects } from './settings/store/settings.effects';
+import { DropdownDirective } from './shared/dropdown.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     DashboardComponent,
+    SettingsComponent,
+    DropdownDirective,
   ],
   imports: [
     BrowserModule,
     CommonModule,
-    AppStoreModule,
+    FormsModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
-    AppRoutingModule,
     AuthModule,
+    AppRoutingModule,
+    AppStoreModule,
+    EffectsModule.forFeature([SettingsEffects]),
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptorService,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
