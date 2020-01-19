@@ -12,18 +12,17 @@ import { AuthModule } from './auth/auth.module';
 import { AppStoreModule } from './modules/app-store.module';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptorService } from './auth/auth.interceptor';
-import { SettingsComponent } from './settings/settings.component';
 import { FormsModule } from '@angular/forms';
 import { EffectsModule } from '@ngrx/effects';
 import { SettingsEffects } from './settings/store/settings.effects';
 import { DropdownDirective } from './shared/dropdown.directive';
+import { SettingsModule } from './settings/settings.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     DashboardComponent,
-    SettingsComponent,
     DropdownDirective,
   ],
   imports: [
@@ -32,6 +31,7 @@ import { DropdownDirective } from './shared/dropdown.directive';
     FormsModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     AuthModule,
+    SettingsModule,
     AppRoutingModule,
     AppStoreModule,
     EffectsModule.forFeature([SettingsEffects]),

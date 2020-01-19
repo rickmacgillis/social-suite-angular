@@ -16,8 +16,9 @@
             </li>
             <li class="nav-item dropdown pointer" id="my-account" appDropdown *ngIf="isAuthenticated">
                 <a class="nav-link dropdown-toggle">My Account</a>
-                <div class="dropdown-menu">
+                <div class="dropdown-menu dropdown-menu-right">
                     <a class="dropdown-item pointer" routerLink="/settings">Settings</a>
+                    <a class="dropdown-item pointer" routerLink="/settings/connected-accounts">Connected Accounts</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item pointer" (click)="onLogout()">Logout</a>
                 </div>

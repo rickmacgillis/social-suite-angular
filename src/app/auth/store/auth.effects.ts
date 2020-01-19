@@ -67,7 +67,7 @@ export class AuthEffects {
   public authRedirect$ = createEffect(() =>
     this.actions$.pipe(
       ofType(AuthActions.authenticateSuccess),
-      tap(action => action.redirect && this.router.navigate(['/']))
+      tap(action => action.redirect && this.router.navigate(['/dashboard']))
     ),
     { dispatch: false }
   );

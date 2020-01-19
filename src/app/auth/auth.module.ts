@@ -7,19 +7,12 @@ import { AuthEffects } from './store/auth.effects';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
-import { LoginRedirectGuard } from './login-redirect.guard';
 import { ResetPasswordConfirmComponent } from './reset-password-confirm/reset-password-confirm.component';
 
 const routes: Routes = [
-    {
-        path: "",
-        canActivate: [LoginRedirectGuard],
-        children: [
-            { path: "", component: AuthComponent },
-            { path: "reset-password", component: ResetPasswordComponent },
-            { path: "reset-password-confirm", component: ResetPasswordConfirmComponent },
-        ]
-    },
+    { path: "", component: AuthComponent },
+    { path: "reset-password", component: ResetPasswordComponent },
+    { path: "reset-password-confirm", component: ResetPasswordConfirmComponent },
 ];
 
 @NgModule({

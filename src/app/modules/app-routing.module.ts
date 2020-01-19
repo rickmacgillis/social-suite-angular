@@ -2,16 +2,21 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 import { DashboardComponent } from '../dashboard/dashboard.component';
 import { AuthGuard } from '../auth/auth.guard';
-import { SettingsComponent } from '../settings/settings.component';
+import { LoginRedirectGuard } from '../auth/login-redirect.guard';
 
 const routes: Routes = [
   { path: "", pathMatch: "full", redirectTo: "dashboard" },
+  { path: "dashboard", component: DashboardComponent, canActivate: [AuthGuard] },
   {
     path: "auth",
+    canActivate: [LoginRedirectGuard],
     loadChildren: () => import('../auth/auth.module').then(module => module.AuthModule),
   },
-  { path: "dashboard", component: DashboardComponent, canActivate: [AuthGuard] },
-  { path: "settings", component: SettingsComponent, canActivate: [AuthGuard] },
+  {
+    path: "settings",
+    canActivate: [AuthGuard],
+    loadChildren: () => import('../settings/settings.module').then(module => module.SettingsModule),
+  },
 ];
 
 @NgModule({
