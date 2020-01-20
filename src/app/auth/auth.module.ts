@@ -8,9 +8,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { ResetPasswordConfirmComponent } from './reset-password-confirm/reset-password-confirm.component';
+import { LoginRedirectGuard } from './login-redirect.guard';
 
 const routes: Routes = [
-    { path: "", component: AuthComponent },
+    { path: "", component: AuthComponent, canActivate: [LoginRedirectGuard] },
     { path: "reset-password", component: ResetPasswordComponent },
     { path: "reset-password-confirm", component: ResetPasswordConfirmComponent },
 ];

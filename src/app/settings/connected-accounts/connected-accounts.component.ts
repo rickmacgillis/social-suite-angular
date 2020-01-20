@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-connected-accounts',
@@ -7,9 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ConnectedAccountsComponent implements OnInit {
 
-  constructor() { }
+  public error: boolean = false;
+  public success: boolean = false;
+
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
+
+    if (this.route.snapshot.queryParams.failed) {
+      this.error = true;
+    }
+
+    if (this.route.snapshot.queryParams.success) {
+      this.success = true;
+    }
+
   }
 
 }

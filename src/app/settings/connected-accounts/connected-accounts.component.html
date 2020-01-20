@@ -4,7 +4,31 @@
             <h3 class="m-0">Connected Accounts</h3>
         </div>
         <div class="card-body">
-            here
+            <div class="alert alert-danger" *ngIf="error">
+                Unfortunately we couldn't connect your account. Please try again.
+            </div>
+            <div class="alert alert-success" *ngIf="success">
+                Great! Your acount is now connected.
+            </div>
+            <div class="custom-control custom-switch">
+                <input type="checkbox" class="custom-control-input" id="connect-twitter">
+                <label class="custom-control-label" for="connect-twitter"><i class="fab fa-twitter"></i> | Twitter</label>
+            </div>
+            <hr>
+            <div class="custom-control custom-switch">
+                <input type="checkbox" class="custom-control-input" id="connect-linkedin">
+                <label class="custom-control-label" for="connect-linkedin"><i class="fab fa-linkedin-in"></i> | Linkedin</label>
+            </div>
+            <hr>
+            <div class="custom-control custom-switch">
+                <input type="checkbox" class="custom-control-input" id="connect-facebook">
+                <label class="custom-control-label" for="connect-facebook"><i class="fab fa-facebook-f"></i> | Facebook</label>
+            </div>
+            <hr>
+            <div class="custom-control custom-switch">
+                <input type="checkbox" class="custom-control-input" id="connect-instagram">
+                <label class="custom-control-label" for="connect-instagram"><i class="fab fa-instagram"></i> | Instagram</label>
+            </div>
         </div>
     </div>
 </div>
