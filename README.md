@@ -1,3 +1,5 @@
+### Discontinued
+
 # Social Suite - Angular Frontend
 
 This package contains the Angular-based frontend for use with [Social Suite](https://github.com/rickmacgillis/social-suite).
