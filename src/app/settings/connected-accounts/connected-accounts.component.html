@@ -3,31 +3,86 @@
         <div class="card-header bg-dark text-white">
             <h3 class="m-0">Connected Accounts</h3>
         </div>
-        <div class="card-body">
-            <div class="alert alert-danger" *ngIf="error">
+         <div class="card-body">
+            <div class="alert alert-danger" *ngIf="connectFail">
                 Unfortunately we couldn't connect your account. Please try again.
             </div>
+            <div class="alert alert-danger" *ngIf="error">
+                {{ error }}
+            </div>
             <div class="alert alert-success" *ngIf="success">
-                Great! Your acount is now connected.
+                Great! You successfully connected your account.
             </div>
-            <div class="custom-control custom-switch">
-                <input type="checkbox" class="custom-control-input" id="connect-twitter">
-                <label class="custom-control-label" for="connect-twitter"><i class="fab fa-twitter"></i> | Twitter</label>
+            <div class="row">
+                <div class="col-md-6">
+                    <h3><i class="fab fa-twitter"></i> | Twitter</h3>
+                </div>
+                <div class="col-md-6 text-right">
+                    <button
+                        class="btn btn-info"
+                        (click)="onConnect('twitter')"
+                        *ngIf="!providers.includes('twitter')"
+                    >Connect</button>
+                    <button
+                        class="btn btn-danger"
+                        (click)="onDisconnect('twitter')"
+                        *ngIf="providers.includes('twitter')"
+                    >Disconnect</button>
+                </div>
             </div>
             <hr>
-            <div class="custom-control custom-switch">
-                <input type="checkbox" class="custom-control-input" id="connect-linkedin">
-                <label class="custom-control-label" for="connect-linkedin"><i class="fab fa-linkedin-in"></i> | Linkedin</label>
+            <div class="row">
+                <div class="col-md-6">
+                    <h3><i class="fab fa-linkedin-in"></i> | Linkedin</h3>
+                </div>
+                <div class="col-md-6 text-right">
+                    <button
+                        class="btn btn-info"
+                        (click)="onConnect('linkedin')"
+                        *ngIf="!providers.includes('linkedin')"
+                    >Connect</button>
+                    <button
+                        class="btn btn-danger"
+                        (click)="onDisconnect('linkedin')"
+                        *ngIf="providers.includes('linkedin')"
+                    >Disconnect</button>
+                </div>
             </div>
             <hr>
-            <div class="custom-control custom-switch">
-                <input type="checkbox" class="custom-control-input" id="connect-facebook">
-                <label class="custom-control-label" for="connect-facebook"><i class="fab fa-facebook-f"></i> | Facebook</label>
+            <div class="row">
+                <div class="col-md-6">
+                    <h3><i class="fab fa-facebook-f"></i> | Facebook</h3>
+                </div>
+                <div class="col-md-6 text-right">
+                    <button
+                        class="btn btn-info"
+                        (click)="onConnect('facebook')"
+                        *ngIf="!providers.includes('facebook')"
+                    >Connect</button>
+                    <button
+                        class="btn btn-danger"
+                        (click)="onDisconnect('facebook')"
+                        *ngIf="providers.includes('facebook')"
+                    >Disconnect</button>
+                </div>
             </div>
             <hr>
-            <div class="custom-control custom-switch">
-                <input type="checkbox" class="custom-control-input" id="connect-instagram">
-                <label class="custom-control-label" for="connect-instagram"><i class="fab fa-instagram"></i> | Instagram</label>
+            <div class="row">
+                <div class="col-md-6">
+                    <h3><i class="fab fa-instagram"></i> | Instagram</h3>
+                </div>
+                <div class="col-md-6 text-right">
+                    <button
+                        class="btn btn-info"
+                        (click)="onConnect('instagram')"
+                        *ngIf="!providers.includes('instagram')"
+                    >Connect</button>
+                    <button
+                        class="btn btn-danger"
+                        (click)="onDisconnect('instagram')"
+                        *ngIf="providers.includes('instagram')"
+                    >Disconnect</button>
+                </div>
             </div>
         </div>
     </div>
