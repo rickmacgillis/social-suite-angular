@@ -48,42 +48,6 @@
                     >Disconnect</button>
                 </div>
             </div>
-            <hr>
-            <div class="row">
-                <div class="col-md-6">
-                    <h3><i class="fab fa-facebook-f"></i> | Facebook</h3>
-                </div>
-                <div class="col-md-6 text-right">
-                    <button
-                        class="btn btn-info"
-                        (click)="onConnect('facebook')"
-                        *ngIf="!providers.includes('facebook')"
-                    >Connect</button>
-                    <button
-                        class="btn btn-danger"
-                        (click)="onDisconnect('facebook')"
-                        *ngIf="providers.includes('facebook')"
-                    >Disconnect</button>
-                </div>
-            </div>
-            <hr>
-            <div class="row">
-                <div class="col-md-6">
-                    <h3><i class="fab fa-instagram"></i> | Instagram</h3>
-                </div>
-                <div class="col-md-6 text-right">
-                    <button
-                        class="btn btn-info"
-                        (click)="onConnect('instagram')"
-                        *ngIf="!providers.includes('instagram')"
-                    >Connect</button>
-                    <button
-                        class="btn btn-danger"
-                        (click)="onDisconnect('instagram')"
-                        *ngIf="providers.includes('instagram')"
-                    >Disconnect</button>
-                </div>
-            </div>
         </div>
     </div>
 </div>
